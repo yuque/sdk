@@ -1,0 +1,47 @@
+{
+  "name": "node-yuque",
+  "version": "1.0.0",
+  "description": "Node SDK for yuque",
+  "main": "lib/index.js",
+  "dependencies": {
+    "debug": "^4.1.1",
+    "extend2": "^1.0.0",
+    "urllib": "^2.33.1"
+  },
+  "devDependencies": {
+    "autod": "^3.0.1",
+    "egg-bin": "^4.3.7",
+    "egg-ci": "^1.8.0",
+    "eslint": "^4.18.1",
+    "eslint-config-egg": "^7.0.0"
+  },
+  "engines": {
+    "node": ">=8.0.0"
+  },
+  "scripts": {
+    "autod": "autod",
+    "lint": "eslint .",
+    "test": "npm run lint -- --fix && egg-bin pkgfiles && npm run test-local",
+    "test-local": "egg-bin test",
+    "cov": "egg-bin cov",
+    "ci": "npm run lint && egg-bin pkgfiles --check && npm run cov",
+    "pkgfiles": "egg-bin pkgfiles"
+  },
+  "ci": {
+    "version": "8, 10"
+  },
+  "eslintIgnore": [
+    "coverage",
+    "dist"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:atian25/node-yuque.git"
+  },
+  "files": [
+    "lib",
+    "index.js"
+  ],
+  "author": "TZ <atian25@qq.com>",
+  "license": "MIT"
+}
