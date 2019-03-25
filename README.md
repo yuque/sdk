@@ -1,4 +1,6 @@
-# ![](./logo.png) Node SDK for [yuque](https://www.yuque.com/yuque/developer/api).
+# ![](./logo.png)
+
+Node SDK for [yuque](https://www.yuque.com/yuque/developer/api)
 
 [![NPM version][npm-image]][npm-url]
 [![build status][travis-image]][travis-url]
@@ -94,7 +96,7 @@ see the source.
 
 see the source.
 
-### respos
+### repos
 
 see the source.
 
