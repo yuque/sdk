@@ -16,7 +16,7 @@ describe('test/repos.test.js', () => {
 
   it('should list by user', async () => {
     const data = await client.repos.list({
-      user,
+      user: 'yuque',
       data: { type: 'Book', include_membered: true, offset: 0 },
     });
     assert(data.length >= 1);
