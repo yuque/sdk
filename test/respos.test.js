@@ -100,11 +100,4 @@ describe('test/repos.test.js', () => {
     assert(data[0].slug === 'quickstart');
     assert(data[0].depth === 1);
   });
-
-  it('should search()', async () => {
-    const data = await client.repos.search({ q: '语雀', type: 'Book' });
-    assert(data.length > 1);
-    const list = data.map(x => x.namespace);
-    assert(list.includes('yuque/help'));
-  });
 });
