@@ -34,13 +34,13 @@
     "coverage",
     "dist"
   ],
+  "homepage": "https://github.com/yuque/node-yuque",
   "repository": {
     "type": "git",
-    "url": "git@github.com:atian25/node-yuque.git"
+    "url": "git@github.com:yuque/node-yuque.git"
   },
   "files": [
-    "lib",
-    "index.js"
+    "lib"
   ],
   "author": "TZ <atian25@qq.com>",
   "license": "MIT"

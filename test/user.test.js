@@ -11,8 +11,8 @@ describe('test/user.test.js', () => {
   });
 
   it('should get user info', async () => {
-    const data = await client.users.get({ login: 'atian25' });
-    assert(data);
+    const data = await client.users.get({ login: 'globaltest1' });
+    assert(data.id === 298555);
   });
 
   it('should get self info', async () => {

@@ -11,12 +11,12 @@ Node SDK for [yuque](https://www.yuque.com/yuque/developer/api)
 
 [npm-image]: https://img.shields.io/npm/v/node-yuque.svg?style=flat-square
 [npm-url]: https://npmjs.org/package/node-yuque
-[travis-image]: https://img.shields.io/travis/atian25/node-yuque.svg?style=flat-square
-[travis-url]: https://travis-ci.org/atian25/node-yuque
-[codecov-image]: https://codecov.io/gh/atian25/node-yuque/branch/master/graph/badge.svg
-[codecov-url]: https://codecov.io/gh/atian25/node-yuque
-[david-image]: https://img.shields.io/david/atian25/node-yuque.svg?style=flat-square
-[david-url]: https://david-dm.org/atian25/node-yuque
+[travis-image]: https://img.shields.io/travis/yuque/node-yuque.svg?style=flat-square
+[travis-url]: https://travis-ci.org/yuque/node-yuque
+[codecov-image]: https://codecov.io/gh/yuque/node-yuque/branch/master/graph/badge.svg
+[codecov-url]: https://codecov.io/gh/yuque/node-yuque
+[david-image]: https://img.shields.io/david/yuque/node-yuque.svg?style=flat-square
+[david-url]: https://david-dm.org/yuque/node-yuque
 [snyk-image]: https://snyk.io/test/npm/node-yuque/badge.svg?style=flat-square
 [snyk-url]: https://snyk.io/test/npm/node-yuque
 [download-image]: https://img.shields.io/npm/dm/node-yuque.svg?style=flat-square
