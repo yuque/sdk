@@ -4,13 +4,13 @@ workflow "Unit Test" {
 }
 
 action "Install" {
-  uses = "actions/npm@59b64a598378f31e49cb76f27d6f3312b582f680"
+  uses = "actions/npm@master"
   args = "install"
 }
 
 action "Test" {
-  uses = "actions/npm@59b64a598378f31e49cb76f27d6f3312b582f680"
+  uses = "actions/npm@master"
   args = "run cov"
-  secrets = ["TOKEN"]
+  secrets = ["GITHUB_TOKEN"]
   needs = ["Install"]
 }
