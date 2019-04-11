@@ -1,4 +1,10 @@
 
+1.0.2 / 2019-04-11
+==================
+
+**others**
+  * [[`e1a7446`](http://github.com/yuque/node-yuque/commit/e1a74463af59d524261e36f90a0fca57dc94f402)] - chore: move to yuque group (#6) (TZ | 天猪 <<atian25@qq.com>>)
+
 1.0.1 / 2019-04-11
 ==================
 
