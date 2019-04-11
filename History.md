@@ -1,4 +1,10 @@
 
+1.1.0 / 2019-04-11
+==================
+
+**features**
+  * [[`42fc9fd`](http://github.com/yuque/sdk/commit/42fc9fd9fb8062a2d40adff337bbd1903a48dfa8)] - feat: rename to @yuque/sdk (#7) (TZ | 天猪 <<atian25@qq.com>>)
+
 1.0.2 / 2019-04-11
 ==================
 
