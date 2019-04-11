@@ -1,5 +1,5 @@
 {
-  "name": "node-yuque",
+  "name": "@yuque/sdk",
   "version": "1.0.2",
   "description": "Node SDK for yuque",
   "main": "lib/index.js",
@@ -34,10 +34,10 @@
     "coverage",
     "dist"
   ],
-  "homepage": "https://github.com/yuque/node-yuque",
+  "homepage": "https://github.com/yuque/sdk",
   "repository": {
     "type": "git",
-    "url": "git@github.com:yuque/node-yuque.git"
+    "url": "git@github.com:yuque/sdk.git"
   },
   "files": [
     "lib"
