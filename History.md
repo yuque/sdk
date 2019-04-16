@@ -1,4 +1,13 @@
 
+1.1.1 / 2019-04-16
+==================
+
+**fixes**
+  * [[`3414384`](http://github.com/yuque/sdk/commit/34143840cce2024f7d51c5cf5c2bd7ae8e6bb760)] - fix: remove user interface (#9) (TZ | 天猪 <<atian25@qq.com>>)
+
+**others**
+  * [[`e904464`](http://github.com/yuque/sdk/commit/e90446425aabaaa190ff8bb809ce79d4217a3084)] - chore: fix jsdoc lint (#8) (TZ | 天猪 <<atian25@qq.com>>)
+
 1.1.0 / 2019-04-11
 ==================
 
