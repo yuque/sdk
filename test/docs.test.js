@@ -30,21 +30,23 @@ describe('test/docs.test.js', () => {
   });
 
   it('should create and delete', async () => {
+    const slug = `unittest_create_${Date.now()}`;
     const title = `a doc auto created by unittest(${Date.now()})`;
     const data = await client.docs.create({
       namespace,
       data: {
         title,
-        slug: 'unittest_create',
+        slug,
         public: 1,
         body: '**auto created by unittest, this is body**',
       },
     });
     assert(data.title === title);
+    assert(data.slug === slug);
     assert(data.body.includes('auto created by unittest'));
 
     const deleteData = await client.docs.delete({ namespace, id: data.id });
-    assert(deleteData.slug === 'unittest_create');
+    assert(deleteData.slug === slug);
     assert(deleteData.title === title);
   });
 
