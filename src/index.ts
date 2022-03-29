@@ -5,7 +5,7 @@ import Repo from "./repo";
 import Doc from "./doc";
 import {RequestOptions} from 'urllib';
 
-interface YuqueOptions {
+export interface YuqueOptions {
     token: string,
     endpoint?: string,
     userAgent?: string,
@@ -22,7 +22,7 @@ export default class Yuque {
     public docs:Doc;
     public constructor(options: YuqueOptions) {
         this.options = options;
-        this.client = new Client();
+        this.client = new Client(this.options);
         this.users = new User();
         this.groups = new Group();
         this.repos = new Repo();
