@@ -1,4 +1,8 @@
-import * as doc from './doc';
+import Client from './client';
+import Group from "./group";
+import User from "./user";
+import Repo from "./repo";
+import Doc from "./doc";
 import {RequestOptions} from 'urllib';
 
 interface YuqueOptions {
@@ -11,8 +15,17 @@ interface YuqueOptions {
 
 export default class Yuque {
     private options:YuqueOptions;
-    public constructor(options:YuqueOptions) {
-        this.options=options;
-
+    public client:Client;
+    public users:User;
+    public groups:Group;
+    public repos:Repo;
+    public docs:Doc;
+    constructor(options: YuqueOptions) {
+        this.options = options;
+        this.client = new Client();
+        this.users = new User();
+        this.groups = new Group();
+        this.repos = new Repo();
+        this.docs = new Doc();
     }
 }
