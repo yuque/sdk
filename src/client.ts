@@ -1,3 +1,1 @@
-export default class CLient{
-
-}
+export default class Client{}

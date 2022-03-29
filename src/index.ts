@@ -1,4 +1,4 @@
-import * as doc from './doc';
+import Client from './client';
 import {RequestOptions} from 'urllib';
 
 interface YuqueOptions {
@@ -11,8 +11,9 @@ interface YuqueOptions {
 
 export default class Yuque {
     private options:YuqueOptions;
+    public client:Client;
     public constructor(options:YuqueOptions) {
         this.options=options;
-
+        this.client=new Client();
     }
 }
