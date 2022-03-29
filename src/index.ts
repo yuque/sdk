@@ -20,7 +20,7 @@ export default class Yuque {
     public groups:Group;
     public repos:Repo;
     public docs:Doc;
-    constructor(options: YuqueOptions) {
+    public constructor(options: YuqueOptions) {
         this.options = options;
         this.client = new Client();
         this.users = new User();
