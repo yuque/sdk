@@ -22,10 +22,11 @@ export default class Yuque {
     public docs:Doc;
     public constructor(options: YuqueOptions) {
         this.options = options;
-        this.client = new Client(this.options);
+        const client = new Client(this.options);
+        this.client=client;
         this.users = new User();
         this.groups = new Group();
         this.repos = new Repo();
-        this.docs = new Doc();
+        this.docs = new Doc({client});
     }
 }
