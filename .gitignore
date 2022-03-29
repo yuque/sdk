@@ -7,4 +7,5 @@ run/
 .DS_Store
 *.swp
 .vscode
-
+yarn.lock
+lib/
