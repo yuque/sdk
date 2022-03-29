@@ -1,9 +1,7 @@
 import assert from "assert";
 import Client from "./client";
+import {GArg} from "./index";
 
-interface DocArg{
-    client:Client,
-}
 interface DocListArg{
     namespace:string,
 }
@@ -42,7 +40,7 @@ interface DocDeleteArg{
 
 export default class Doc{
     private client:Client;
-    constructor({client}:DocArg) {
+    constructor({client}:GArg) {
         this.client=client;
     }
     public async list({namespace}:DocListArg){

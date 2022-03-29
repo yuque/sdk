@@ -12,6 +12,12 @@ export interface YuqueOptions {
     requestOpts?:RequestOptions,
     handler?:(res:any)=>any,
 }
+export interface GArg{
+    client:Client,
+}
+export interface QArg{
+    login?:string,
+}
 
 export default class Yuque {
     private options:YuqueOptions;
@@ -25,7 +31,7 @@ export default class Yuque {
         const client = new Client(this.options);
         this.client=client;
         this.users = new User();
-        this.groups = new Group();
+        this.groups = new Group({client});
         this.repos = new Repo();
         this.docs = new Doc({client});
     }
