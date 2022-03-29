@@ -30,9 +30,9 @@ export default class Yuque {
         this.options = options;
         const client = new Client(this.options);
         this.client=client;
-        this.users = new User();
+        this.users = new User({client});
         this.groups = new Group({client});
-        this.repos = new Repo();
+        this.repos = new Repo({client});
         this.docs = new Doc({client});
     }
 }
