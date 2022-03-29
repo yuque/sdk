@@ -9,6 +9,7 @@
     "urllib": "^2.33.1"
   },
   "devDependencies": {
+    "@types/debug": "^4.1.7",
     "@types/node": "^17.0.23",
     "autod": "^3.0.1",
     "egg-bin": "^4.3.7",
