@@ -8,3 +8,4 @@ run/
 *.swp
 .vscode
 yarn.lock
+lib/
