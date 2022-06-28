@@ -1,12 +1,10 @@
 'use strict';
 
+import { ApiBase, RepoInfo, RepoType, TocInfo } from './type';
+
 const assert = require('assert');
 
-class Repo {
-  constructor({ client }) {
-    this.client = client;
-  }
-
+class Repo extends ApiBase {
   /**
    * list repos of user or group
    * @param {Object} args - params
@@ -18,10 +16,22 @@ class Repo {
    * @param {Number} [args.data.offset] - limit offset, each page is 20.
    * @return {Promise<RepoInfo[]>} return repos
    */
-  async list({ user, group, data }) {
+  async list({
+    user,
+    group,
+    data,
+  }: {
+    user?: string;
+    group?: string;
+    data?: {
+      type: RepoType;
+      include_membered?: boolean;
+      offset: number;
+    };
+  }) {
     assert(user || group, 'user or group is required');
     const api = user ? `users/${user}/repos` : `groups/${group}/repos`;
-    return this.client.request(api, { method: 'GET', data });
+    return this.client.request<RepoInfo[]>(api, { method: 'GET', data });
   }
 
   /**
@@ -37,10 +47,18 @@ class Repo {
    * @param {Number} [args.data.public] - `0` as private, `1` as bussiness public, `2` as global public
    * @return {Promise<RepoInfo>} return repo info
    */
-  async create({ user, group, data }) {
+  async create({
+    user,
+    group,
+    data,
+  }: {
+    user?: string;
+    group?: string;
+    data?: Partial<RepoInfo>;
+  }) {
     assert(user || group, 'user or group is required');
     const api = user ? `users/${user}/repos` : `groups/${group}/repos`;
-    return this.client.request(api, { method: 'POST', data });
+    return this.client.request<RepoInfo>(api, { method: 'POST', data });
   }
 
   /**
@@ -51,9 +69,20 @@ class Repo {
    * @param {String} [args.data.type] - repo type, `Book` / `Design` / `Column`
    * @return {Promise<RepoInfo>} return repo info
    */
-  async get({ namespace, data }) {
+  async get({
+    namespace,
+    data,
+  }: {
+    namespace: string | number;
+    data: {
+      type: RepoType;
+    };
+  }) {
     assert(namespace, 'namespace is required');
-    return this.client.request(`repos/${namespace}`, { method: 'GET', data });
+    return this.client.request<RepoInfo>(`repos/${namespace}`, {
+      method: 'GET',
+      data,
+    });
   }
 
   /**
@@ -68,9 +97,18 @@ class Repo {
    * @param {Number} [args.data.public] - `0` as private, `1` as bussiness public, `2` as global public
    * @return {Promise<RepoInfo>} return repo info
    */
-  async update({ namespace, data }) {
+  async update({
+    namespace,
+    data,
+  }: {
+    namespace: string | number;
+    data?: Partial<RepoInfo>;
+  }) {
     assert(namespace, 'namespace is required');
-    return this.client.request(`repos/${namespace}`, { method: 'PUT', data });
+    return this.client.request<RepoInfo>(`repos/${namespace}`, {
+      method: 'PUT',
+      data,
+    });
   }
 
   /**
@@ -79,9 +117,11 @@ class Repo {
    * @param {String|Number} args.namespace - repo namespace or id
    * @return {Promise<RepoInfo>} return repo info
    */
-  async delete({ namespace }) {
+  async delete({ namespace }: { namespace: string | number }) {
     assert(namespace, 'namespace is required');
-    return this.client.request(`repos/${namespace}`, { method: 'DELETE' });
+    return this.client.request<RepoInfo>(`repos/${namespace}`, {
+      method: 'DELETE',
+    });
   }
 
   /**
@@ -90,10 +130,12 @@ class Repo {
    * @param {String|Number} args.namespace - repo namespace or id
    * @return {Promise<TocInfo[]>} return toc info, `[{ title, slug, depth }, ...]`
    */
-  async getTOC({ namespace }) {
+  async getTOC({ namespace }: { namespace: string | number }) {
     assert(namespace, 'namespace is required');
-    return this.client.request(`repos/${namespace}/toc`, { method: 'GET' });
+    return this.client.request<TocInfo[]>(`repos/${namespace}/toc`, {
+      method: 'GET',
+    });
   }
 }
 
-module.exports = Repo;
+export default Repo;
