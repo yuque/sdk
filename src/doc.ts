@@ -1,20 +1,21 @@
-'use strict';
+"use strict";
 
-const assert = require('assert');
+import { ApiBase, DocInfo } from "./type";
 
-class Doc {
-  constructor({ client }) {
-    this.client = client;
-  }
+const assert = require("assert");
+
+class Doc extends ApiBase {
   /**
    * list docs of a repo
    * @param {Object} args - params
    * @param {String} args.namespace - repos namespace or id
    * @return {Promise<DocInfo[]>} return docs
    */
-  async list({ namespace }) {
-    assert(namespace, 'repo namespace or id is required');
-    return this.client.request(`repos/${namespace}/docs`, { method: 'GET' });
+  async list({ namespace }: { namespace: string }) {
+    assert(namespace, "repo namespace or id is required");
+    return this.client.request<DocInfo[]>(`repos/${namespace}/docs`, {
+      method: "GET",
+    });
   }
 
   /**
@@ -26,10 +27,23 @@ class Doc {
    * @param {Number} [args.data.raw] - pass `1` will return markdown body
    * @return {Promise<DocInfo>} - return specified doc
    */
-  async get({ namespace, slug, data }) {
-    assert(namespace, 'repo namespace or id is required');
-    assert(slug, 'doc slug or id is required');
-    return this.client.request(`repos/${namespace}/docs/${slug}`, { method: 'GET', data });
+  async get({
+    namespace,
+    slug,
+    data,
+  }: {
+    namespace: string;
+    slug: string;
+    data?: {
+      raw: number;
+    };
+  }) {
+    assert(namespace, "repo namespace or id is required");
+    assert(slug, "doc slug or id is required");
+    return this.client.request<DocInfo>(`repos/${namespace}/docs/${slug}`, {
+      method: "GET",
+      data,
+    });
   }
 
   /**
@@ -44,9 +58,18 @@ class Doc {
    * @param {String} [args.data.body] - doc content, max size is 5MB
    * @return {Promise<DocInfo>} - return specified doc
    */
-  async create({ namespace, data }) {
-    assert(namespace, 'repo namespace or id is required');
-    return this.client.request(`repos/${namespace}/docs`, { method: 'POST', data });
+  async create({
+    namespace,
+    data,
+  }: {
+    namespace: string;
+    data: Partial<DocInfo>;
+  }) {
+    assert(namespace, "repo namespace or id is required");
+    return this.client.request<DocInfo>(`repos/${namespace}/docs`, {
+      method: "POST",
+      data,
+    });
   }
 
   /**
@@ -61,10 +84,21 @@ class Doc {
    * @param {String} [args.data.body] - doc content, markdown, max size is 5MB
    * @return {Promise<DocInfo>} - return specified doc
    */
-  async update({ namespace, id, data }) {
-    assert(namespace, 'repo namespace or id is required');
-    assert(id, 'doc id is required');
-    return this.client.request(`repos/${namespace}/docs/${id}`, { method: 'PUT', data });
+  async update({
+    namespace,
+    id,
+    data,
+  }: {
+    namespace: string;
+    id: number;
+    data: Partial<DocInfo>;
+  }) {
+    assert(namespace, "repo namespace or id is required");
+    assert(id, "doc id is required");
+    return this.client.request<DocInfo>(`repos/${namespace}/docs/${id}`, {
+      method: "PUT",
+      data,
+    });
   }
 
   /**
@@ -74,11 +108,13 @@ class Doc {
    * @param {String} args.id - doc id, NOT `slug`
    * @return {Promise<DocInfo>} - return specified doc
    */
-  async delete({ namespace, id }) {
-    assert(namespace, 'repo namespace or id is required');
-    assert(id, 'doc id is required');
-    return this.client.request(`repos/${namespace}/docs/${id}`, { method: 'DELETE' });
+  async delete({ namespace, id }: { namespace: string; id: number }) {
+    assert(namespace, "repo namespace or id is required");
+    assert(id, "doc id is required");
+    return this.client.request<DocInfo>(`repos/${namespace}/docs/${id}`, {
+      method: "DELETE",
+    });
   }
 }
 
-module.exports = Doc;
+export default Doc;

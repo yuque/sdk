@@ -10,10 +10,12 @@
   },
   "devDependencies": {
     "autod": "^3.0.1",
-    "egg-bin": "^4.3.7",
+    "egg-bin": "^5.1.1",
     "egg-ci": "^1.8.0",
-    "eslint": "^4.18.1",
-    "eslint-config-egg": "^7.0.0"
+    "eslint": "^8.3.0",
+    "eslint-config-egg": "^12.0.0",
+    "typescript": "^4.7.4",
+    "@types/node": "^14.18.21"
   },
   "engines": {
     "node": ">=8.0.0"
@@ -21,18 +23,18 @@
   "scripts": {
     "autod": "autod",
     "lint": "eslint .",
+    "prepare": "tsc",
+    "dev": "tsc -w",
     "test": "npm run lint -- --fix && egg-bin pkgfiles && npm run test-local",
     "test-local": "egg-bin test",
     "cov": "egg-bin cov",
     "ci": "npm run lint && egg-bin pkgfiles --check && npm run cov",
     "pkgfiles": "egg-bin pkgfiles"
   },
-  "ci": {
-    "version": "8, 10"
-  },
   "eslintIgnore": [
     "coverage",
-    "dist"
+    "dist",
+    "lib"
   ],
   "homepage": "https://github.com/yuque/sdk",
   "repository": {
