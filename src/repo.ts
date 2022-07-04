@@ -1,8 +1,8 @@
-'use strict';
+"use strict";
 
-import { ApiBase, RepoInfo, RepoType, TocInfo } from './type';
+import { ApiBase, RepoInfo, RepoType, TocInfo } from "./type";
 
-const assert = require('assert');
+const assert = require("assert");
 
 class Repo extends ApiBase {
   /**
@@ -29,9 +29,9 @@ class Repo extends ApiBase {
       offset: number;
     };
   }) {
-    assert(user || group, 'user or group is required');
+    assert(user || group, "user or group is required");
     const api = user ? `users/${user}/repos` : `groups/${group}/repos`;
-    return this.client.request<RepoInfo[]>(api, { method: 'GET', data });
+    return this.client.request<RepoInfo[]>(api, { method: "GET", data });
   }
 
   /**
@@ -56,9 +56,9 @@ class Repo extends ApiBase {
     group?: string;
     data?: Partial<RepoInfo>;
   }) {
-    assert(user || group, 'user or group is required');
+    assert(user || group, "user or group is required");
     const api = user ? `users/${user}/repos` : `groups/${group}/repos`;
-    return this.client.request<RepoInfo>(api, { method: 'POST', data });
+    return this.client.request<RepoInfo>(api, { method: "POST", data });
   }
 
   /**
@@ -73,14 +73,14 @@ class Repo extends ApiBase {
     namespace,
     data,
   }: {
-    namespace: string | number;
+    namespace: string;
     data: {
       type: RepoType;
     };
   }) {
-    assert(namespace, 'namespace is required');
+    assert(namespace, "namespace is required");
     return this.client.request<RepoInfo>(`repos/${namespace}`, {
-      method: 'GET',
+      method: "GET",
       data,
     });
   }
@@ -101,12 +101,12 @@ class Repo extends ApiBase {
     namespace,
     data,
   }: {
-    namespace: string | number;
+    namespace: string;
     data?: Partial<RepoInfo>;
   }) {
-    assert(namespace, 'namespace is required');
+    assert(namespace, "namespace is required");
     return this.client.request<RepoInfo>(`repos/${namespace}`, {
-      method: 'PUT',
+      method: "PUT",
       data,
     });
   }
@@ -117,10 +117,10 @@ class Repo extends ApiBase {
    * @param {String|Number} args.namespace - repo namespace or id
    * @return {Promise<RepoInfo>} return repo info
    */
-  async delete({ namespace }: { namespace: string | number }) {
-    assert(namespace, 'namespace is required');
+  async delete({ namespace }: { namespace: string }) {
+    assert(namespace, "namespace is required");
     return this.client.request<RepoInfo>(`repos/${namespace}`, {
-      method: 'DELETE',
+      method: "DELETE",
     });
   }
 
@@ -130,10 +130,10 @@ class Repo extends ApiBase {
    * @param {String|Number} args.namespace - repo namespace or id
    * @return {Promise<TocInfo[]>} return toc info, `[{ title, slug, depth }, ...]`
    */
-  async getTOC({ namespace }: { namespace: string | number }) {
-    assert(namespace, 'namespace is required');
+  async getTOC({ namespace }: { namespace: string }) {
+    assert(namespace, "namespace is required");
     return this.client.request<TocInfo[]>(`repos/${namespace}/toc`, {
-      method: 'GET',
+      method: "GET",
     });
   }
 }

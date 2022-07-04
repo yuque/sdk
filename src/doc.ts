@@ -1,8 +1,8 @@
-'use strict';
+"use strict";
 
-import { ApiBase, DocInfo } from './type';
+import { ApiBase, DocInfo } from "./type";
 
-const assert = require('assert');
+const assert = require("assert");
 
 class Doc extends ApiBase {
   /**
@@ -11,10 +11,10 @@ class Doc extends ApiBase {
    * @param {String} args.namespace - repos namespace or id
    * @return {Promise<DocInfo[]>} return docs
    */
-  async list({ namespace }: { namespace: string | number }) {
-    assert(namespace, 'repo namespace or id is required');
+  async list({ namespace }: { namespace: string }) {
+    assert(namespace, "repo namespace or id is required");
     return this.client.request<DocInfo[]>(`repos/${namespace}/docs`, {
-      method: 'GET',
+      method: "GET",
     });
   }
 
@@ -32,16 +32,16 @@ class Doc extends ApiBase {
     slug,
     data,
   }: {
-    namespace: string | number;
-    slug: number;
+    namespace: string;
+    slug: string;
     data?: {
       raw: number;
     };
   }) {
-    assert(namespace, 'repo namespace or id is required');
-    assert(slug, 'doc slug or id is required');
+    assert(namespace, "repo namespace or id is required");
+    assert(slug, "doc slug or id is required");
     return this.client.request<DocInfo>(`repos/${namespace}/docs/${slug}`, {
-      method: 'GET',
+      method: "GET",
       data,
     });
   }
@@ -62,12 +62,12 @@ class Doc extends ApiBase {
     namespace,
     data,
   }: {
-    namespace: string | number;
+    namespace: string;
     data: Partial<DocInfo>;
   }) {
-    assert(namespace, 'repo namespace or id is required');
+    assert(namespace, "repo namespace or id is required");
     return this.client.request<DocInfo>(`repos/${namespace}/docs`, {
-      method: 'POST',
+      method: "POST",
       data,
     });
   }
@@ -89,14 +89,14 @@ class Doc extends ApiBase {
     id,
     data,
   }: {
-    namespace: string | number;
+    namespace: string;
     id: number;
     data: Partial<DocInfo>;
   }) {
-    assert(namespace, 'repo namespace or id is required');
-    assert(id, 'doc id is required');
+    assert(namespace, "repo namespace or id is required");
+    assert(id, "doc id is required");
     return this.client.request<DocInfo>(`repos/${namespace}/docs/${id}`, {
-      method: 'PUT',
+      method: "PUT",
       data,
     });
   }
@@ -108,11 +108,11 @@ class Doc extends ApiBase {
    * @param {String} args.id - doc id, NOT `slug`
    * @return {Promise<DocInfo>} - return specified doc
    */
-  async delete({ namespace, id }: { namespace: string | number; id: number }) {
-    assert(namespace, 'repo namespace or id is required');
-    assert(id, 'doc id is required');
+  async delete({ namespace, id }: { namespace: string; id: number }) {
+    assert(namespace, "repo namespace or id is required");
+    assert(id, "doc id is required");
     return this.client.request<DocInfo>(`repos/${namespace}/docs/${id}`, {
-      method: 'DELETE',
+      method: "DELETE",
     });
   }
 }
